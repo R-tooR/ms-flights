@@ -35,7 +35,7 @@ jobs:
         echo "Python path: ${{steps.install-python.outputs.python-path}}"
         echo "Python version: ${{steps.install-python.outputs.python-version}}"
         echo "PATH: $PATH"
-        export PYTHON=${{steps.install-python.outputs.python-path}}
+        npm config set python '${{steps.install-python.outputs.python-path}}'
         make test
         
     # Push the image to Docker Hub
