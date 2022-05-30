@@ -31,7 +31,7 @@ jobs:
 
     # Test the service using the make file
     - name: Run Unit Tests
-      run: make test
+      run: make build # test
 #      run: |
 #        echo "Python path: ${{steps.install-python.outputs.python-path}}"
 #        echo "Python version: ${{steps.install-python.outputs.python-version}}"
