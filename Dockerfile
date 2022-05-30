@@ -32,6 +32,7 @@ ENTRYPOINT ./shell/run-db-migration.sh && node server.js
 FROM base as build
 
 USER root
+RUN apk add g++ make py3-pip
 RUN npm install -g nodemon \
  && npm install \
  && chown -R node /opt/app
