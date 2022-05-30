@@ -20,24 +20,25 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    - name: Install Python
-      id: install-python
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.10.4'
-        architecture: 'x64'
+#    - name: Install Python
+#      id: install-python
+#      uses: actions/setup-python@v3
+#      with:
+#        python-version: '3.10.4'
+#        architecture: 'x64'
       
 
 
     # Test the service using the make file
     - name: Run Unit Tests
-      run: |
-        echo "Python path: ${{steps.install-python.outputs.python-path}}"
-        echo "Python version: ${{steps.install-python.outputs.python-version}}"
-        echo "PATH: $PATH"
-        python --version
-        npm config set python '/opt/hostedtoolcache/Python/3.10.4/x64/bin'
-        make test
+      run: make test
+#      run: |
+#        echo "Python path: ${{steps.install-python.outputs.python-path}}"
+#        echo "Python version: ${{steps.install-python.outputs.python-version}}"
+#        echo "PATH: $PATH"
+#        python --version
+#        npm config set python '/opt/hostedtoolcache/Python/3.10.4/x64/bin'
+#        make test
         
     # Push the image to Docker Hub
     - name: Build and push to Docker Registry
