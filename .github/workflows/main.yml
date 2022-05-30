@@ -20,15 +20,20 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    - uses: actions/setup-python@v3
+    - name: Install Python
+      id: install-python
+      uses: actions/setup-python@v3
       with:
         python-version: '3.x'
         architecture: 'x64'
+      
 
 
     # Test the service using the make file
     - name: Run Unit Tests
-      run: make test
+      run: |
+        export PYTHON=${{steps.install-python.outputs.python-path}}
+        make test
         
     # Push the image to Docker Hub
     - name: Build and push to Docker Registry
